@@ -1,0 +1,27 @@
+name: 'Run a custom action as a demo'
+description: 'Just echo something'
+inputs:
+  jira-username:
+    description: 'Username used to poll Jira for ticket information'
+    required: true
+  jira-api-token:
+    description: 'API Token used to poll Jira for ticket information'
+    required: true
+  JIRA_URL:
+    description: 'URL of the Jira instance, e.g. https://foo.atlassian.net'
+    required: true
+    default: 'https://foo.atlassian.net'
+  BASE_BRANCH:
+    description: 'Base branch'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - id: trigger_jenkins_job_using_api
+      run: |
+            echo "It works ... "
+      shell: bash
+branding:
+  icon: 'arrow-down-circle'
+  color: 'gray-dark'
